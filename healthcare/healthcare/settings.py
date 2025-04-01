@@ -2,7 +2,7 @@ from pathlib import Path
 
 import os
 from dotenv import load_dotenv
-
+from datetime import timedelta
 
 load_dotenv()
 
@@ -20,6 +20,25 @@ SECRET_KEY = "django-insecure-aah6hio*c0scv^b*a6m)%#fi2%u=u9(5f0^_3(ri+0)wdhil#$
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+
+# JWT Settings
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Access tokens expire after 60 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),    # Refresh tokens expire after 1 day
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,  # Use the same secret key as Django
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Use "Bearer" in Authorization header
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+}
 
 
 # Application definition
