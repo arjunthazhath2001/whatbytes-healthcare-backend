@@ -15,7 +15,7 @@ class Patient(models.Model):
         ('Female','Female'),
         ('Other','Other'),])
     
-    phone= models.CharField(max_length=15)
+    phone= models.CharField(max_length=15,unique=True)
     address= models.TextField()
 
     created_at=models.DateTimeField(auto_now_add=True)
