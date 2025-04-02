@@ -6,9 +6,9 @@ from .views import register_user, PatientViewSet, DoctorViewSet, PatientDoctorMa
 # Create a router for ViewSets
 router = DefaultRouter()
 # Register viewsets with the router
-router.register(r'patients', PatientViewSet, basename='patient')
-router.register(r'doctors', DoctorViewSet, basename='doctor')
-router.register(r'mappings', PatientDoctorMappingViewSet, basename='mapping')
+router.register('patients', PatientViewSet, basename='patient')
+router.register('doctors', DoctorViewSet, basename='doctor')
+router.register('mappings', PatientDoctorMappingViewSet, basename='mapping')
 
 # Define URL patterns
 urlpatterns = [
